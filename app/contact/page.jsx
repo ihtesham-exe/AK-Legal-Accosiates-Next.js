@@ -16,6 +16,8 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,15 +27,36 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real application, this would send the data to a server
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setFormData({ name: "", email: "", phone: "", message: "" });
+          setSubmitted(false);
+        }, 3000);
+      } else {
+        const data = await response.json();
+        setError(data.message || "Failed to send message");
+      }
+    } catch (err) {
+      setError("Failed to send message. Please try again.");
+      console.error("Error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,12 +65,21 @@ export default function Contact() {
 
       <main>
         {/* Page Header */}
-        <section className="bg-primary text-primary-foreground py-12 px-4">
+        <section
+          className="bg-primary text-primary-foreground py-12 px-4"
+          style={{
+            background:
+              "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 905%, #1e3a8a 100%)",
+          }}
+        >
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-secondary">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-secondary animate-fadeInUp">
               Contact Us
             </h1>
-            <p className="text-lg text-primary-foreground/90">
+            <p
+              className="text-lg text-primary-foreground/90 animate-fadeInUp"
+              style={{ animationDelay: "200ms" }}
+            >
               Get in touch with our legal team for a consultation
             </p>
           </div>
@@ -84,7 +116,8 @@ export default function Contact() {
                     href={item.link}
                     target={item.title === "Address" ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="bg-card rounded-lg p-8 shadow-md border border-border hover:shadow-lg transition-shadow"
+                    className="bg-card rounded-lg p-8 shadow-md border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-fadeInUp"
+                    style={{ animationDelay: `${i * 150}ms` }}
                   >
                     <Icon className="w-8 h-8 text-accent mb-4" />
                     <h3 className="text-lg font-bold mb-2">{item.title}</h3>
@@ -96,7 +129,7 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
+              <div className="animate-fadeInUp">
                 <h2 className="text-2xl font-bold mb-6 text-primary">
                   Send Us a Message
                 </h2>
@@ -169,36 +202,41 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full bg-secondary cursor-pointer py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow"
+                    disabled={loading}
+                    className="w-full bg-secondary cursor-pointer py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </button>
 
                   {submitted && (
-                    <div className="p-4 bg-green-100 text-green-800 rounded-lg text-center font-semibold">
+                    <div className="p-4 bg-green-100 text-green-800 rounded-lg text-center font-semibold animate-fadeInUp">
                       Thank you! We'll be in touch shortly.
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="p-4 bg-red-100 text-red-800 rounded-lg text-center font-semibold animate-fadeInUp">
+                      {error}
                     </div>
                   )}
                 </form>
               </div>
 
-              <div className="bg-muted rounded-lg p-8 border border-border">
+              <div
+                className="bg-muted rounded-lg p-8 border border-border animate-fadeInUp"
+                style={{ animationDelay: "200ms" }}
+              >
                 <h2 className="text-2xl font-bold mb-6 text-primary">
                   Office Hours
                 </h2>
                 <div className="space-y-4 mb-8">
                   <div className="flex justify-between">
-                    <span className="font-semibold">Monday - Friday</span>
+                    <span className="font-semibold">Monday - Saturday</span>
                     <span className="text-foreground/70">
-                      8:00 AM - 6:00 PM
+                      2:00 PM - 9:00 PM
                     </span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="font-semibold">Saturday</span>
-                    <span className="text-foreground/70">
-                      9:00 AM - 3:00 PM
-                    </span>
-                  </div>
+
                   <div className="flex justify-between">
                     <span className="font-semibold">Sunday</span>
                     <span className="text-foreground/70">Closed</span>

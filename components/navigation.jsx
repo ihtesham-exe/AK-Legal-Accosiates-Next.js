@@ -10,7 +10,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="text-secondary sticky top-0 z-50 shadow-lg"
+      className="text-secondary sticky top-0 z-50 shadow-lg h-25"
       style={{
         background:
           "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 75%, #1e3a8a 100%)",
@@ -21,13 +21,10 @@ export function Navigation() {
           <Image
             src="/logo-ak-firm.png"
             alt="AK Legal Associates"
-            className="h-8"
+            className="h-18 w-auto"
             width={60}
-            height={500}
+            height={50}
           />
-          <Link href="/" className="text-3xl font-bold">
-            AK Legal Associates
-          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 text-lg">
@@ -62,34 +59,42 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-2 border-t border-primary-foreground/20 pt-4">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="mt-4 pb-4 space-y-2 border-t border-primary-foreground/20 pt-4">
             <Link
               href="/"
-              className="block hover:text-accent transition-colors"
+              className="block hover:text-accent transition-colors transform hover:translate-x-2 duration-200"
+              onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/services"
-              className="block hover:text-accent transition-colors"
+              className="block hover:text-accent transition-colors transform hover:translate-x-2 duration-200"
+              onClick={() => setIsOpen(false)}
             >
               Services
             </Link>
             <Link
               href="/about"
-              className="block hover:text-accent transition-colors"
+              className="block hover:text-accent transition-colors transform hover:translate-x-2 duration-200"
+              onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="block hover:text-accent transition-colors"
+              className="block hover:text-accent transition-colors transform hover:translate-x-2 duration-200"
+              onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

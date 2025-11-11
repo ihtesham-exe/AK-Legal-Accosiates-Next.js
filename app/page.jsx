@@ -25,7 +25,7 @@ export default function Home() {
             <Image
               src="/logo-ak-firm.png"
               alt="Hero Image"
-              className="mx-auto mb-8"
+              className="mx-auto mb-8 animate-fadeInUp"
               width={600}
               height={400}
             />
@@ -42,10 +42,14 @@ export default function Home() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-secondary text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-transform"
+              className="inline-flex items-center gap-2 bg-secondary text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-110 transition-all duration-300 animate-fadeInUp group"
+              style={{ animationDelay: "400ms" }}
             >
               Schedule Consultation
-              <ArrowRight size={20} />
+              <ArrowRight
+                size={20}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
           </div>
         </section>
@@ -82,9 +86,10 @@ export default function Home() {
                 return (
                   <div
                     key={i}
-                    className="bg-card rounded-lg p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all border border-border"
+                    className="bg-card rounded-lg p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border animate-fadeInUp"
+                    style={{ animationDelay: `${i * 150}ms` }}
                   >
-                    <Icon className="w-12 h-12 text-accent mb-4" />
+                    <Icon className="w-12 h-12 text-accent mb-4 animate-bounce-slow" />
                     <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                     <p className="text-foreground/70 leading-relaxed">
                       {service.description}
@@ -132,7 +137,13 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-primary text-primary-foreground py-12 px-4">
+        <section
+          className="bg-primary text-primary-foreground py-12 px-4 "
+          style={{
+            background:
+              "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 905%, #1e3a8a 100%)",
+          }}
+        >
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4 text-secondary">
               Ready to Get Started?

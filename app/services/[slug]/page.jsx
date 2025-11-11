@@ -5,6 +5,22 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const servicesData = {
+  litigation: {
+    title: "Litigation",
+    description:
+      "Representation and advocacy in civil and criminal litigation.",
+    overview:
+      "Our litigation practice offers comprehensive legal representation in a wide range of civil and criminal matters. We are committed to achieving the best possible outcomes for our clients through strategic advocacy and thorough preparation.",
+    services: [
+      "Civil litigation",
+      "Criminal defense",
+      "Family",
+      "Services",
+      "NAB/FIA",
+      "Banking",
+      "Narcotics",
+    ],
+  },
   arbitration: {
     title: "Arbitration",
     description:
@@ -218,7 +234,13 @@ export default async function ServiceDetail({ params }) {
 
       <main>
         {/* Page Header */}
-        <section className="bg-primary text-primary-foreground py-12 px-4">
+        <section
+          className="bg-primary text-primary-foreground py-12 px-4"
+          style={{
+            background:
+              "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 905%, #1e3a8a 100%)",
+          }}
+        >
           <div className="max-w-6xl mx-auto">
             <Link
               href="/services"

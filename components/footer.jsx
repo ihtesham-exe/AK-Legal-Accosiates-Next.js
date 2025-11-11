@@ -3,10 +3,11 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer 
+    <footer
       className="text-primary-foreground py-12"
       style={{
-        background: 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 75%, #1e3a8a 100%)'
+        background:
+          "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 75%, #1e3a8a 100%)",
       }}
     >
       <h2 className="text-3xl font-bold text-secondary text-center mb-10">

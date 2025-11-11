@@ -9,12 +9,21 @@ export default function About() {
 
       <main>
         {/* Page Header */}
-        <section className="bg-primary text-primary-foreground py-12 px-4">
+        <section
+          className="bg-primary text-primary-foreground py-12 px-4"
+          style={{
+            background:
+              "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 905%, #1e3a8a 100%)",
+          }}
+        >
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-secondary">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-secondary animate-fadeInUp">
               About AK Legal Associates
             </h1>
-            <p className="text-lg text-primary-foreground/90">
+            <p
+              className="text-lg text-primary-foreground/90 animate-fadeInUp"
+              style={{ animationDelay: "200ms" }}
+            >
               A team of dedicated legal professionals committed to excellence
             </p>
           </div>
@@ -24,7 +33,7 @@ export default function About() {
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
+              <div className="animate-fadeInUp">
                 <h2 className="text-3xl font-bold mb-6 text-primary">
                   About Us
                 </h2>
@@ -56,7 +65,10 @@ export default function About() {
                   available for your legal matter/ issue.
                 </p>
               </div>
-              <div className="bg-linear-to-br from-primary to-primary/80 rounded-lg h-64 flex items-center justify-center text-primary-foreground">
+              <div
+                className="bg-linear-to-br from-primary to-primary/80 rounded-lg h-64 flex items-center justify-center text-primary-foreground animate-fadeInUp"
+                style={{ animationDelay: "200ms" }}
+              >
                 <div className="text-center">
                   <div className="text-5xl font-bold mb-2 text-secondary">
                     3+
@@ -67,7 +79,7 @@ export default function About() {
             </div>
 
             {/* Core Values */}
-            <h2 className="text-3xl font-bold mb-8 text-center text-primary">
+            <h2 className="text-3xl font-bold mb-8 text-center text-primary animate-fadeInUp">
               Our Core Values
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -93,8 +105,12 @@ export default function About() {
               ].map((value, i) => {
                 const Icon = value.icon;
                 return (
-                  <div key={i} className="text-center">
-                    <Icon className="w-12 h-12 text-accent mx-auto mb-4" />
+                  <div
+                    key={i}
+                    className="text-center animate-fadeInUp"
+                    style={{ animationDelay: `${i * 150}ms` }}
+                  >
+                    <Icon className="w-12 h-12 text-accent mx-auto mb-4 animate-bounce-slow" />
                     <h3 className="text-xl font-bold mb-2">{value.title}</h3>
                     <p className="text-foreground/70">{value.description}</p>
                   </div>
@@ -103,8 +119,10 @@ export default function About() {
             </div>
 
             {/* Team Highlights */}
-            <div className="bg-muted rounded-lg p-8 border border-border">
-              <h2 className="text-2xl font-bold mb-6 text-primary">Our Team</h2>
+            <div className="bg-muted rounded-lg p-8 border border-border animate-fadeInUp">
+              <h2 className="text-2xl font-bold mb-6 text-secondary">
+                Our Team
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   "Managing Partner with 30+ years of corporate law experience",
@@ -125,18 +143,28 @@ export default function About() {
         </section>
 
         {/* CTA */}
-        <section className="bg-primary text-primary-foreground py-12 px-4 mt-12">
+        <section
+          className="bg-primary text-primary-foreground py-12 px-4 mt-12"
+          style={{
+            background:
+              "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 905%, #1e3a8a 100%)",
+          }}
+        >
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4 text-secondary">
+            <h2 className="text-2xl font-bold mb-4 text-secondary animate-fadeInUp">
               Ready to Work With Us?
             </h2>
-            <p className="text-lg mb-6 text-primary-foreground/90">
+            <p
+              className="text-lg mb-6 text-primary-foreground/90 animate-fadeInUp"
+              style={{ animationDelay: "200ms" }}
+            >
               Contact us today to discuss how our team can serve your legal
               needs.
             </p>
             <a
               href="/contact"
-              className="inline-block bg-secondary text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow"
+              className="inline-block bg-secondary text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-110 transition-all duration-300 animate-fadeInUp"
+              style={{ animationDelay: "400ms" }}
             >
               Get in Touch
             </a>

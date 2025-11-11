@@ -21,6 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo-ak-firm.png" type="image/png" />
+      </head>
       <body
         className={`${montserrat.variable} font-sans antialiased font-semibold`}
       >

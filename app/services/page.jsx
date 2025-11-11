@@ -6,26 +6,20 @@ import Link from "next/link";
 export default function Services() {
   const services = [
     {
+      title: "Litigation",
+      slug: "litigation",
+      description:
+        "Representation and advocacy in civil and criminal litigation.",
+      items: [],
+    },
+    {
       title: "Arbitration",
       slug: "arbitration",
       description:
         "Expert resolution of disputes outside the courts through arbitration.",
       items: [],
     },
-    {
-      title: "Banking & Finance",
-      slug: "banking-finance",
-      description:
-        "Comprehensive legal support for banking and financial matters.",
-      items: [],
-    },
-    {
-      title: "Capital Markets",
-      slug: "capital-markets",
-      description:
-        "Legal guidance for capital market transactions and regulations.",
-      items: [],
-    },
+
     {
       title: "Commercial",
       slug: "commercial",
@@ -53,12 +47,7 @@ export default function Services() {
         "Resolving disputes efficiently through various legal mechanisms.",
       items: [],
     },
-    {
-      title: "Employment & Immigration",
-      slug: "employment-immigration",
-      description: "Legal services for employment and immigration matters.",
-      items: [],
-    },
+
     {
       title: "Engineering & Construction",
       slug: "engineering-construction",
@@ -101,12 +90,21 @@ export default function Services() {
 
       <main>
         {/* Page Header */}
-        <section className="bg-primary text-primary-foreground py-12 px-4">
+        <section
+          className="bg-primary text-primary-foreground py-12 px-4"
+          style={{
+            background:
+              "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 905%, #1e3a8a 100%)",
+          }}
+        >
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-secondary">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-secondary animate-fadeInUp">
               Our Services
             </h1>
-            <p className="text-lg text-primary-foreground/90">
+            <p
+              className="text-lg text-primary-foreground/90 animate-fadeInUp"
+              style={{ animationDelay: "200ms" }}
+            >
               Comprehensive legal solutions tailored to your unique needs
             </p>
           </div>
@@ -120,7 +118,8 @@ export default function Services() {
                 <Link
                   key={i}
                   href={`/services/${service.slug}`}
-                  className="bg-card rounded-lg p-8 shadow-md border border-border hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer"
+                  className="bg-card rounded-lg p-8 shadow-md border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer animate-fadeInUp"
+                  style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <h2 className="text-2xl font-bold text-primary mb-3">
                     {service.title}
@@ -146,15 +145,19 @@ export default function Services() {
         {/* CTA */}
         <section className="bg-accent/10 py-12 px-4 border-t border-b border-border">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4 text-primary">
+            <h2 className="text-2xl font-bold mb-4 text-primary animate-fadeInUp">
               Need Legal Assistance?
             </h2>
-            <p className="text-foreground/70 mb-6">
+            <p
+              className="text-foreground/70 mb-6 animate-fadeInUp"
+              style={{ animationDelay: "200ms" }}
+            >
               Contact us to discuss how we can help with your legal matters.
             </p>
             <a
               href="/contact"
-              className="inline-block bg-secondary  px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow"
+              className="inline-block bg-secondary px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-110 transition-all duration-300 animate-fadeInUp"
+              style={{ animationDelay: "400ms" }}
             >
               Schedule a Consultation
             </a>
